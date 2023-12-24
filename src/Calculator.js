@@ -20,10 +20,15 @@ const Calculator = () => {
   };
 
   const handleEvaluate = () => {
-    try {
-      setResult(eval(input));
-    } catch (error) {
+    if (input.trim() === '') {
+      // Handle incomplete expression
       setResult('Error');
+    } else {
+      try {
+        setResult(eval(input));
+      } catch (error) {
+        setResult('Error');
+      }
     }
   };
 
